@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AGENT V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+
+<div class="chat-container">
+
+  <!-- HEADER -->
+  <header class="chat-header">
+    <div class="brand">
+      <span class="logo">🥷</span>
+      <span class="name">AGENT V</span>
+    </div>
+    <a href="/logout" class="logout">Logout</a>
+  </header>
+
+  <!-- CHAT -->
+  <main class="chat-box" id="messages">
+    <div class="message bot">
+      Hello 👋  
+      I’m AGENT V.<br> 
+      created by Mr.vasu🥷 <br>you can ask me anything you want ❤️.
+    </div>
+  </main>
+
+  <!-- INPUT -->
+  <footer class="chat-input">
+    <textarea id="input" placeholder="Message MyChat AI…"></textarea>
+    <button id="sendBtn">➤</button>
+  </footer>
+
+</div>
+
+<script>
+  const CHAT_ENDPOINT = '/api/chat';
+  const messages = document.getElementById('messages');
+  const input = document.getElementById('input');
+  const sendBtn = document.getElementById('sendBtn');
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = 'message ' + role;
+    div.innerHTML = text.replace(/\n/g, '<br>');
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = document.getElementById('input').value.trim();
+
+    console.log("TEXT FROM INPUT:", text); // DEBUG
+
+    if (!text) return;
+
+    addMessage('user', text);
+    document.getElementById('input').value = '';
+
+    try {
+      const res = await fetch(CHAT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ message: text })
+      });
+
+      const data = await res.json();
+      addMessage('bot', data.reply || 'No response');
+
+    } catch (err) {
+      console.error(err);
+      addMessage('bot', '⚠️ Something went wrong.');
+    }
+  }
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+</script>
+
+
+</body>
+</html>

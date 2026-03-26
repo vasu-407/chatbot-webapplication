@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | AI Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='register.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<script>
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+</script>
+
+<body>
+
+<div class="page">
+
+    <!-- LEFT CHATBOT INFO -->
+    <div class="left">
+        <div class="bot">
+            🤖
+        </div>
+        <h1>Welcome to MyChatbot</h1>
+        <p>
+            Your personal AI assistant.<br>
+            Ask questions, get instant answers,<br>
+            and chat smarter every day.
+        </p>
+    </div>
+
+    <!-- RIGHT REGISTER FORM -->
+    <div class="right">
+        <h2>Create Account</h2>
+        <p class="subtitle">Get started in less than a minute</p>
+
+        <form method="POST" action="{{ url_for('register') }}">
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Your name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="input-group password-group">
+    <label>Password</label>
+    <div class="password-wrapper">
+        <input type="password" name="password" id="password" placeholder="Your password" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+    </div>
+</div>
+
+            <button type="submit">Create Account</button>
+
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Log in</a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

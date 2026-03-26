@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyChat AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<div class="particles"></div>
+
+<body>
+
+<div class="scene">
+
+  <!-- ROBOT -->
+  <div class="robot-zone" id="robotZone">
+    <img src="{{ url_for('static', filename='robot.png') }}"
+         alt="AI Robot"
+         class="robot"
+         id="robot">
+    <div class="eye-glow" id="eyeGlow"></div>
+    <div class="shadow"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <h1>
+      Meet your <span>AI Companion</span>
+    </h1>
+
+    <p>
+      A cinematic AI assistant for everyday conversations,
+      creativity, learning, and productivity.
+    </p>
+
+    <div class="buttons">
+      <a href="/register" class="btn primary">Get Started</a>
+      <a href="/login" class="btn secondary">Log in</a>
+    </div>
+
+    <!-- Invisible typing trigger (simulates typing reaction) -->
+    <input type="text" id="typingTrigger" placeholder="Type to wake the AI…" />
+  </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>

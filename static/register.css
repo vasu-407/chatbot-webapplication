@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f8fafc;
+}
+
+/* PAGE LAYOUT */
+.page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* LEFT SIDE */
+.left {
+    flex: 1;
+    background: #020617;
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+
+.bot {
+    font-size: 80px;
+    margin-bottom: 30px;
+}
+
+.left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.left p {
+    font-size: 18px;
+    color: #cbd5f5;
+    line-height: 1.6;
+}
+
+/* RIGHT SIDE */
+.right {
+    flex: 1;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+}
+
+.right h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+/* FORM */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #334155;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #cbd5f5;
+    font-size: 15px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+/* LOGIN LINK */
+.login-link {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.login-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .page {
+        flex-direction: column;
+    }
+
+    .left, .right {
+        padding: 50px;
+        text-align: center;
+    }
+}
+/* PASSWORD TOGGLE */
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 45px; /* space for eye icon */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #64748b;
+    user-select: none;
+}
+
+.toggle-password:hover {
+    color: #2563eb;
+}
