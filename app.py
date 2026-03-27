@@ -12,10 +12,10 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
 # -----------------------------
 def get_db_connection():
     return psycopg2.connect(
-        host="DB_HOST",
+        host="localhost",
         database="chatbot_db",
-        user="DB USER",
-        password="DB PASSWORD"
+        user="postgres",
+        password="vasu"
     )
 # -----------------------------
 # for saving previous messages
