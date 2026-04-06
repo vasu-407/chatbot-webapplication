@@ -11,12 +11,7 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
 # DATABASE CONNECTION
 # -----------------------------
 def get_db_connection():
-    return psycopg2.connect(
-        host="localhost",
-        database="chatbot_db",
-        user="postgres",
-        password="vasu"
-    )
+    return psycopg2.connect(os.environ.get("DATABASE_URL"))
 # -----------------------------
 # for saving previous messages
 # -----------------------------
@@ -299,4 +294,5 @@ def chat():
 # RUN APP
 # -----------------------------
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
