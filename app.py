@@ -11,7 +11,10 @@ app.secret_key = os.getenv("SECRET_KEY", "fallback_key")
 # DATABASE CONNECTION
 # -----------------------------
 def get_db_connection():
-    return psycopg2.connect(os.environ.get("DATABASE_URL"))
+    return psycopg2.connect(
+        os.environ.get("DATABASE_URL"),
+        sslmode="require"
+    )
 # -----------------------------
 # for saving previous messages
 # -----------------------------
